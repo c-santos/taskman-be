@@ -6,7 +6,7 @@ services:
       - .:/app
     ports:
       - $PORT:8000 #HOST:CONTAINER
-    command: python manage.py runserver
+    command: python manage.py runserver 0.0.0.0:$PORT
     environment:
       - PORT=$PORT
     depends_on:
