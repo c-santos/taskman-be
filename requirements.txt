@@ -1,2 +1,4 @@
 djangorestframework
 markdown
+psycopg[binary]
+python-dotenv

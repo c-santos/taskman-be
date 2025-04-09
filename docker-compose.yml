@@ -1,0 +1,29 @@
+services:
+  taskman:
+    container_name: "taskman"
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - $PORT:8000 #HOST:CONTAINER
+    command: python manage.py runserver
+    environment:
+      - PORT=$PORT
+    depends_on:
+      - database
+    networks:
+      - taskman-network
+
+  database:
+    image: "postgres"
+    ports:
+      - $DB_PORT:5432 # HOST:CONTAINER
+    environment:
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_DB: $DB_NAME
+    networks:
+      - taskman-network
+
+networks:
+  taskman-network:
