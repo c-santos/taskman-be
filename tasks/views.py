@@ -29,7 +29,7 @@ class TaskDetail(APIView):
         except TaskModel.DoesNotExist:
             raise Http404
 
-    def get(self, pk):
+    def get(self, request, pk):
         task = self.get_object(pk)
         serializer = TaskSerializer(task)
         return Response(serializer.data)
@@ -42,7 +42,7 @@ class TaskDetail(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, pk):
+    def delete(self, request, pk):
         task = self.get_object(pk)
         task.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
