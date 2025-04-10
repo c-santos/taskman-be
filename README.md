@@ -8,7 +8,7 @@
 
 Make sure env vars are present:
 ```sh
-cp .env-example .env
+cp env-example .env
 ```
 
 
